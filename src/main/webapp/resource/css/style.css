@@ -1,0 +1,51 @@
+@charset "utf-8";
+nav {
+	font-size: 50px;
+	color: #ff9d37;
+	text-align: center;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	background-color: #ff6972;
+}
+div {
+	width: 245px;
+	height: 400px;
+	background-color: #ff6972;
+	margin: 100px auto;
+
+
+}
+@keyframes love {
+	25%,50%,75% { transform: translateY(0); opacity: 1}   /* 停留*/
+
+
+
+}
+.opacity {
+	background: no-repeat; /*去掉背景颜色*/
+}
+.delay1 {
+	animation-delay: .1s;  /*动画延迟了0.1秒时间*/
+}
+.delay2 {
+	animation-delay: .2s;
+}
+.delay3 {
+	animation-delay: .3s;
+}
+.delay4 {
+	animation-delay: .4s;
+}
+.delay5 {
+	animation-delay: .3s;
+}
+.delay6 {
+	animation-delay: .2s;
+}
+.delay7 {
+	animation-delay: .3s;
+}

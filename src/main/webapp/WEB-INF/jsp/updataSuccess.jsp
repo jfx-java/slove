@@ -1,0 +1,35 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: yezhentou
+  Date: 2019/11/6
+  Time: 8:52
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="/common/taplibs.jsp" %>
+<html>
+<head>
+    <title>Title</title>
+    <script type="text/javascript" src="${ctx}/resource/plugin/jquery/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<p><span id="text">修改成功！将在<span style="color: red">5秒</span>后自动跳转到个人首页   </span><a href="${ctx}/dispatcher/ash">点击此处快速跳转</a></p>
+</body>
+<script  type="text/javascript">
+    $(function () {
+        var num=4;
+        window.setTimeout(a,1000);
+        function a(){
+            if (num!=0){
+                $("#text").html("修改成功！将在<span style=\"color: red\">"+num+"秒</span>后自动跳转到个人呢首页。" +
+                    "   ");
+                window.setTimeout(a,1000);
+                num--;
+            }else {
+                num=4;
+                window.location="${ctx}/dispatcher/ash";
+            }
+        }
+    });
+</script>
+</html>

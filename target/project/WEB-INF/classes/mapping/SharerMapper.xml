@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.love.dao.SharerMapper">
+    <resultMap id="sharerResultMap" type="com.love.pojo.Sharer">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="login_name" column="loginName" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="love_data" column="loveData" jdbcType="INTEGER"/>
+
+        <result property="imgurl" column="imgurl" jdbcType="VARCHAR"/>
+        <result property="create_date" column="createDate" javaType="java.util.Date"  jdbcType="TIMESTAMP"/>
+        <result property="update_date" column="updateDate" javaType="java.util.Date"  jdbcType="DATE"/>
+    </resultMap>
+
+    <select id="select" resultMap="sharerResultMap" parameterType="string">
+        select *
+        from sharer
+        where login_name = #{loginName};
+    </select>
+    <select id="selectlove" resultType="int">
+        select count(*) from sharer;
+    </select>
+    <insert id="add" parameterType="string" >
+        insert into sharer(login_name,password) values (#{loginName},#{password});
+    </insert>
+
+    <update id="updatalovea">
+        update sharer set love_data=love_data-#{num} where id=#{sharerId};
+    </update>
+    <update id="updataloveb">
+        update accepter set accept_love_data=accept_love_data+1 where id=#{id};
+    </update>
+    <insert id="insertLove">
+        insert into love(give) values (#{adata});
+    </insert>
+    <select id="sl" resultType="int">
+        select count(id) from love where give=#{adata};
+    </select>
+</mapper>

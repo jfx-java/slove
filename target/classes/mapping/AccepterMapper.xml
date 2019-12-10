@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.love.dao.AccepterMapper">
+    <resultMap id="accepterResultMap" type="com.love.pojo.Accepter">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="login_name" column="loginName" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="difficulty" column="difficulty" jdbcType="VARCHAR"/>
+        <result property="imgurl" column="imgurl" jdbcType="VARCHAR"/>
+        <result property="accept_love_data" column="acceptLoveData" jdbcType="INTEGER"/>
+        <result property="create_date" column="createDate" javaType="java.util.Date"  jdbcType="TIMESTAMP"/>
+        <result property="update_date" column="updateDate" javaType="java.util.Date"  jdbcType="DATE"/>
+    </resultMap>
+    <select id="select" resultMap="accepterResultMap" parameterType="string">
+        select *
+        from accepter
+        where login_name = #{loginName};
+    </select>
+
+
+    <select id="st" resultType="com.love.pojo.Accepter" parameterType="int">
+        select *
+        from accepter
+        where id = #{id};
+    </select>
+
+    <insert id="add" parameterType="string" >
+        insert into accepter(login_name,password,difficulty) values (#{loginName},#{password},#{difficulty});
+    </insert>
+    <update id="updata" parameterType="com.love.pojo.Accepter">
+        update accepter set
+        login_name=#{loginName},
+    </update>
+    <update id="changeImgurl">
+        update accepter set
+        imgurl=#{imgurl}
+        where id=#{id};
+        <!--传int值 --><!--传int值 --><!--传int值 --><!--传int值 --><!--传int值 --><!--传int值 --><!--传int值 -->
+<!--传int值 -->
+
+    </update>
+    <update id="updataAccepter">
+        update accepter set
+        name =#{name},
+        password=#{password},
+        difficulty=#{difficulty}
+        where id=#{id};
+    </update>
+</mapper>

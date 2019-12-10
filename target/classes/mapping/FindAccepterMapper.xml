@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.love.dao.SharerMapper">
+    <resultMap id="accepterResultMap" type="com.love.pojo.Accepter">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="login_name" column="loginName" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="difficulty" column="difficulty" jdbcType="VARCHAR"/>
+        <result property="imgurl" column="imgurl" jdbcType="VARCHAR"/>
+        <result property="accept_love_data" column="acceptLoveData" jdbcType="INTEGER"/>
+        <result property="create_date" column="createDate" javaType="java.util.Date"  jdbcType="TIMESTAMP"/>
+        <result property="update_date" column="updateDate" javaType="java.util.Date"  jdbcType="DATE"/>
+    </resultMap>
+
+    <select id="selectAccepter"  resultMap="accepterResultMap">
+        select * from accepter order by accept_love_data desc
+    </select>
+</mapper>
